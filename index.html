@@ -3,55 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestione Budget Casa</title>
+    <title>Budget Casa - Marco & Giuliana</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container no-print">
-        <aside class="sidebar">
-            <h2>Configurazione Budget</h2>
-            <div class="form-group">
-                <label>Stipendio Marco (€)</label>
-                <input type="number" id="income-marco" value="1853">
+    <div class="dashboard">
+        <!-- BARRA LATERALE: CONFIGURAZIONE -->
+        <aside class="sidebar no-print">
+            <div class="sidebar-header">
+                <h2>⚙️ Configurazione</h2>
             </div>
-            <div class="form-group">
-                <label>Stipendio Giuliana (€)</label>
-                <input type="number" id="income-giuliana" value="1428">
+            
+            <div class="input-section">
+                <h3>Redditi & Percentuale Affitto</h3>
+                <div class="form-group">
+                    <label>Stipendio Netto Marco (€)</label>
+                    <input type="number" id="income-marco" value="1853.32" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Stipendio Netto Giuliana (€)</label>
+                    <input type="number" id="income-giuliana" value="1428.71" step="0.01">
+                </div>
+                
+                <label class="checkbox-group">
+                    <input type="checkbox" id="manual-rent-toggle"> Forza % Affitto Manuale
+                </label>
+                <div class="form-group" id="manual-rent-container" style="margin-top: 8px; display: none;">
+                    <label>% Affitto a carico di Marco</label>
+                    <input type="number" id="rent-perc-marco" value="58" min="0" max="100" step="1">
+                </div>
             </div>
-            <div class="form-group">
-                <label>Affitto (€)</label>
-                <input type="number" id="expense-rent" value="800">
+
+            <div class="input-section">
+                <h3>Spese Casa e Utenze</h3>
+                <div class="form-group">
+                    <label>Affitto Mensile (€)</label>
+                    <input type="number" id="exp-rent" value="800" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Luce (Mensile) (€)</label>
+                    <input type="number" id="exp-power" value="75.29" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Gas (Bimestrale) (€) <small>- Diviso x2</small></label>
+                    <input type="number" id="exp-gas" value="52.48" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Internet (Mensile) (€)</label>
+                    <input type="number" id="exp-internet" value="23" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Acqua (Quadrimestrale) (€) <small>- Diviso x4</small></label>
+                    <input type="number" id="exp-water" value="30" step="0.01">
+                </div>
             </div>
-            <div class="form-group">
-                <label>Utenze Fisse (Luce, Gas, Internet, Acqua) (€)</label>
-                <input type="number" id="expense-utilities" value="132">
+
+            <div class="input-section">
+                <h3>Spesa Alimentare e Quote</h3>
+                <div class="form-group">
+                    <label>Buoni Pasto Marco (€/mese)</label>
+                    <input type="number" id="marco-vouchers" value="140" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Fondo Extra / Spesa (A testa) (€)</label>
+                    <input type="number" id="extra-fund" value="100" step="0.01">
+                </div>
+
+                <label class="checkbox-group" style="margin-top: 15px;">
+                    <input type="checkbox" id="manual-quota-toggle"> Forza Quota Fissa Marco (€)
+                </label>
+                <div class="form-group" id="manual-quota-container" style="margin-top: 8px; display: none;">
+                    <label>Quota desiderata Marco (€)</label>
+                    <input type="number" id="forced-marco-quota" value="650" step="1">
+                </div>
             </div>
-            <div class="form-group">
-                <label>Buoni Pasto Marco (€)</label>
-                <input type="number" id="marco-vouchers" value="140">
+
+            <div class="input-section" style="background: #e8f4fd; border-color: #bce0fd;">
+                <h3>Aggiustamenti Finali (+ / -)</h3>
+                <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 10px;">Somma o sottrai un importo per arrotondare manualmente le quote finali.</p>
+                <div class="form-group">
+                    <label>Aggiustamento Marco (€)</label>
+                    <input type="number" id="adj-marco" value="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label>Aggiustamento Giuliana (€)</label>
+                    <input type="number" id="adj-giuliana" value="0" step="1">
+                </div>
             </div>
-            <div class="form-group">
-                <label>Fondo Spesa / Casa (€ extra a testa)</label>
-                <input type="number" id="extra-fund" value="100">
+
+            <div class="action-section">
+                <input type="text" id="history-note" placeholder="Nota storico (es. Configurazione Novembre)">
+                <button type="button" id="btn-save" class="btn btn-primary">💾 Salva nello Storico</button>
+                <button type="button" id="btn-set-default" class="btn btn-success">⭐ Imposta come Default</button>
+                <button type="button" id="btn-reset-default" class="btn btn-reset">🔄 Ripristina valori di base</button>
+                <button type="button" id="btn-print" class="btn btn-secondary" style="margin-top: 10px;">🖨️ Scarica PDF / Stampa</button>
             </div>
-            <div class="form-group">
-                <label>Nota / Modifica (per lo storico)</label>
-                <input type="text" id="history-note" placeholder="es. Aggiornamento stipendio ottobre">
-            </div>
-            <button onclick="calculateAndRender()" class="btn btn-primary">Calcola Anteprima</button>
-            <button onclick="saveToHistory()" class="btn btn-success">Salva in Storico</button>
-            <button onclick="window.print()" class="btn btn-secondary">Scarica PDF</button>
         </aside>
 
-        <main class="content">
-            <h2>Storico Modifiche</h2>
-            <div id="history-list" class="history-list"></div>
-        </main>
-    </div>
+        <!-- AREA PRINCIPALE: REPORT E STORICO -->
+        <main class="main-content">
+            
+            <div id="report-area" class="report-card">
+                <div class="report-header">
+                    <h1>Report Gestione Budget & Divisione Spese</h1>
+                    <p class="subtitle">Accordo operativo (Data elaborazione: <span id="report-date"></span>)</p>
+                </div>
 
-    <!-- QUESTA È LA SEZIONE CHE VERRÀ STAMPATA NEL PDF -->
-    <div id="report-print-area" class="report-area">
-        <!-- Il contenuto verrà iniettato da JS -->
+                <div class="report-grid">
+                    <div class="box">
+                        <h3>Proporzione Redditi / Affitto</h3>
+                        <p>Marco: <strong id="perc-marco">0%</strong></p>
+                        <p>Giuliana: <strong id="perc-giuliana">0%</strong></p>
+                    </div>
+                    <div class="box">
+                        <h3>Costi Mensili Comuni</h3>
+                        <p>Affitto: <strong id="tot-rent">€0</strong></p>
+                        <p>Totale Utenze Fisse: <strong id="tot-utilities">€0</strong></p>
+                    </div>
+                </div>
+
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Categoria Spesa</th>
+                            <th>Importo Mensile Reale</th>
+                            <th>Metodo di Copertura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Affitto Casa</td>
+                            <td id="td-rent">€0</td>
+                            <td>Conto Cointestato (Pro-quota)</td>
+                        </tr>
+                        <tr>
+                            <td>Elettricità (Luce)</td>
+                            <td id="td-power">€0</td>
+                            <td>Conto Cointestato (Diviso 50/50)</td>
+                        </tr>
+                        <tr>
+                            <td>Gas Metano <small>(Quota mensile)</small></td>
+                            <td id="td-gas">€0</td>
+                            <td>Conto Cointestato (Diviso 50/50)</td>
+                        </tr>
+                        <tr>
+                            <td>Internet Fibra</td>
+                            <td id="td-internet">€0</td>
+                            <td>Conto Cointestato (Diviso 50/50)</td>
+                        </tr>
+                        <tr>
+                            <td>Acqua Potabile <small>(Quota mensile)</small></td>
+                            <td id="td-water">€0</td>
+                            <td>Conto Cointestato (Diviso 50/50)</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td style="text-align: right;">Totale Utenze:</td>
+                            <td id="td-utilities">€0</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Spesa Supermercato / Casa</td>
+                            <td id="td-groceries">€0 (in Buoni) + Resto</td>
+                            <td>Buoni Marco + Conto Cointestato</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="final-summary">
+                    <h2>Riepilogo Bonifici Mensili (1° del Mese)</h2>
+                    <div class="summary-flex">
+                        <div class="quota-box marco">
+                            <span>Quota Marco</span>
+                            <h2 id="final-marco">€0</h2>
+                        </div>
+                        <div class="quota-box giuliana">
+                            <span>Quota Giuliana</span>
+                            <h2 id="final-giuliana">€0</h2>
+                        </div>
+                    </div>
+                    <div class="total-account">
+                        <p>Totale sul Conto Cointestato: <strong id="final-total">€0</strong></p>
+                        <p class="note" id="custom-quota-note">Nota: Gli importi rispecchiano i dati calcolati.</p>
+                    </div>
+                </div>
+
+                <!-- NUOVA SEZIONE: 3. LOGICA DI CALCOLO -->
+                <div class="shared-section">
+                    <h2>3. LOGICA DI CALCOLO E CRITERI</h2>
+                    <div class="logic-grid">
+                        <div class="logic-card blue">
+                            <h3>Ripartizione Affitto & Utenze</h3>
+                            <ul>
+                                <li><strong>Utenze (Luce, Gas, Internet, Acqua):</strong> Divise al <strong>50/50</strong>.</li>
+                                <li><strong>Affitto (<span id="logic-rent">€0</span>):</strong> Diviso in proporzione al netto medio (<strong id="logic-perc">0% Marco / 0% Giuliana</strong>), tutelando la variabilità della P.IVA e compensando lo scaglione IRPEF.</li>
+                            </ul>
+                        </div>
+                        <div class="logic-card green">
+                            <h3>Gestione Spesa & Cuscinetto</h3>
+                            <p>Aggiungendo <span id="logic-extra-fund">100€</span> a testa sulla base proporzionale e unendo i <span id="logic-vouchers">140€</span> di buoni pasto di Marco, si ottengono <strong>~<span id="logic-total-groceries">350€</span>/mese</strong> per la spesa. I versamenti sul conto generano un <strong>avanzo di ~<span id="logic-surplus">9€</span>/mese</strong> a garanzia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUOVA SEZIONE: 4. OPERATIVITÀ CONDIVISA -->
+                <div class="shared-section">
+                    <h2>4. OPERATIVITÀ CONDIVISA</h2>
+                    <div class="ops-grid">
+                        
+                        <div class="ops-card">
+                            <div class="ops-badge">PASSAGGIO 1</div>
+                            <h3>Bonifici Automatici</h3>
+                            <p>Impostare bonifico ricorrente il 1° del mese (<strong id="ops-quota-marco">€0</strong> Marco / <strong id="ops-quota-giuliana">€0</strong> Giuliana).</p>
+                        </div>
+                        
+                        <div class="ops-card">
+                            <div class="ops-badge">PASSAGGIO 2</div>
+                            <h3>Carta del Conto</h3>
+                            <p>Usare la carta cointestata per la spesa al supermercato non coperta dai buoni.</p>
+                        </div>
+                        
+                        <div class="ops-card">
+                            <div class="ops-badge">PASSAGGIO 3</div>
+                            <h3>Check Mensile Operativo</h3>
+                            <p>Verificare a fine <strong id="ops-check-mensile">mese corrente</strong> se le uscite sono state coperte o se serve micro-adeguare (+20€ a testa o tagli).</p>
+                        </div>
+
+                        <div class="ops-card">
+                            <div class="ops-badge">PASSAGGIO 4</div>
+                            <h3>Check Semestrale</h3>
+                            <p>Verifica programmata per <strong id="ops-check-semestrale">Mese Anno</strong> di incassi P.IVA e saldo accumulato per bilanciamento.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- STORICO SALVATAGGI -->
+            <div class="history-section no-print">
+                <div class="history-header">
+                    <h2>Storico Configurazioni</h2>
+                    <button type="button" id="btn-clear-history" class="btn btn-danger">🗑️ Svuota Storico</button>
+                </div>
+                <div id="history-list" class="history-list">
+                    <!-- Iniettato via JS -->
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="app.js"></script>
