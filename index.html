@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Budget Casa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container no-print">
+        <aside class="sidebar">
+            <h2>Configurazione Budget</h2>
+            <div class="form-group">
+                <label>Stipendio Marco (€)</label>
+                <input type="number" id="income-marco" value="1853">
+            </div>
+            <div class="form-group">
+                <label>Stipendio Giuliana (€)</label>
+                <input type="number" id="income-giuliana" value="1428">
+            </div>
+            <div class="form-group">
+                <label>Affitto (€)</label>
+                <input type="number" id="expense-rent" value="800">
+            </div>
+            <div class="form-group">
+                <label>Utenze Fisse (Luce, Gas, Internet, Acqua) (€)</label>
+                <input type="number" id="expense-utilities" value="132">
+            </div>
+            <div class="form-group">
+                <label>Buoni Pasto Marco (€)</label>
+                <input type="number" id="marco-vouchers" value="140">
+            </div>
+            <div class="form-group">
+                <label>Fondo Spesa / Casa (€ extra a testa)</label>
+                <input type="number" id="extra-fund" value="100">
+            </div>
+            <div class="form-group">
+                <label>Nota / Modifica (per lo storico)</label>
+                <input type="text" id="history-note" placeholder="es. Aggiornamento stipendio ottobre">
+            </div>
+            <button onclick="calculateAndRender()" class="btn btn-primary">Calcola Anteprima</button>
+            <button onclick="saveToHistory()" class="btn btn-success">Salva in Storico</button>
+            <button onclick="window.print()" class="btn btn-secondary">Scarica PDF</button>
+        </aside>
+
+        <main class="content">
+            <h2>Storico Modifiche</h2>
+            <div id="history-list" class="history-list"></div>
+        </main>
+    </div>
+
+    <!-- QUESTA È LA SEZIONE CHE VERRÀ STAMPATA NEL PDF -->
+    <div id="report-print-area" class="report-area">
+        <!-- Il contenuto verrà iniettato da JS -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
