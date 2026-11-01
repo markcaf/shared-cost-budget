@@ -33,10 +33,7 @@ Il progetto è suddiviso in tre file puliti e separati:
 ### 1. In locale
 Basta scaricare i tre file (`index.html`, `style.css`, `app.js`) all'interno della stessa cartella e fare doppio click su `index.html` per aprirli con qualsiasi browser web (Chrome, Safari, Firefox).
 
-### 2. Pubblicarla online gratis con GitHub Pages (Consigliato per Smartphone)
-Per avere l'app sempre a portata di mano sul cellulare tramite un link web:
-1. Crea una repository su **GitHub** e carica i tre file (`index.html`, `style.css`, `app.js`).
-2. Vai su **Settings > Pages** nella tua repository.
-3. Sotto *Build and deployment*, seleziona il ramo principale (es. `main` o `master`) e clicca su **Save**.
-4. Dopo circa un minuto, GitHub ti fornirà un URL pubblico (es. `https://tuonome.github.io/nome-repo/`).
-5. Apri quell'URL dal browser del tuo smartphone (Safari o Chrome) e salvalo tra i preferiti o aggiungilo alla schermata Home come un'app nativa!
+### 2. Pubblicata online con GitHub Pages (Consigliato per Smartphone)
+Per avviare l'app a portata di mano sul cellulare seguire il seguente link web:
+1. **[GitHub](https://markcaf.github.io/shared-cost-budget/)**
+5. Apri quell'URL dal browser del tuo smartphone (Safari o Chrome o altro) e salvalo tra i preferiti o aggiungilo alla schermata Home come un'app nativa!
