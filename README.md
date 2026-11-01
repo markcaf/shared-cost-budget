@@ -1,55 +1,42 @@
-# 💰 Budget Casa - Gestione Spese di Coppia (Marco & Giuliana)
+# 🏠 Gestione Budget Familiare & Condivisa
 
-Applicativo web local-first (Vanilla JavaScript, HTML5 e CSS3) progettato per la gestione, il calcolo dinamico e la rendicontazione delle spese domestiche condivise (affitto, utenze, spesa alimentare e fondi di riserva).
-
-## 🚀 Funzionalità Principali
-
-* **Calcolatore Live in Tempo Reale:** Qualsiasi modifica nei campi della barra laterale (stipendi, affitto, bollette, buoni pasto o aggiustamenti) ricalcola istantaneamente il report, le percentuali e le quote finali.
-* **Gestione Frequenze Utenze:** Converte automaticamente in importi mensili reali le bollette con cadenza bimestrale (es. Gas) o quadrimestrale (es. Acqua).
-* **Affitto Proporzionale o Manuale:** Possibilità di calcolare la divisione dell'affitto in base ai redditi netti oppure forzare una percentuale fissa a carico.
-* **Arrotondamenti e Aggiustamenti Finali (+/-):** Permette di arrotondare liberamente le quote finali di ciascuno con un delta positivo o negativo, ricalcolando automaticamente il totale sul conto cointestato.
-* **Storico Interattivo con Ripristino:** Salva le configurazioni nel `localStorage` del browser. Cliccando su un elemento dello storico, i dati vengono ricaricati istantaneamente nel form.
-* **Persistenza Default Personale:** Puoi salvare la tua configurazione attuale come Default permanente o ripristinare in un click i valori di base originali.
-* **Sezioni Dinamiche Operative:** I blocchi di logica di calcolo e operatività condivisa (Passaggi 1-4) ricevono importi e date dinamiche in base alla configurazione attiva o allo storico selezionato.
-* **Esportazione PDF / Stampa Ottimizzata:** Foglio di stile CSS dedicato (`@media print`) che nasconde i controlli e stampa un report A4 pulito ed elegante.
+Un'applicazione web leggera, moderna e interamente basata su client (Vanilla HTML, CSS, JavaScript) progettata per gestire e suddividere le spese di coppia o di coabitazione in modo equo, trasparente e dinamico. L'app gira interamente nel browser e non richiede alcun database o server backend.
 
 ---
 
-## 🛠️ Stack Tecnologico
-* **Frontend:** HTML5, CSS3 (Flexbox & CSS Grid)
-* **Logica:** Vanilla JavaScript (ES6)
-* **Persistenza Dati:** `localStorage` del browser (Nessun database o server backend richiesto).
+## ✨ Funzionalità Principali
+
+* **Nomi Utente Personalizzabili:** I nomi dei partecipanti sono modificabili in tempo reale e si aggiornano automaticamente in tutte le sezioni del report, dei calcoli e dello storico.
+* **Redditi & Ripartizione Pro-Quota:** Calcolo automatico della percentuale di carico dell'affitto/mutuo in base ai rispettivi stipendi netti (con opzione per forzare una percentuale manuale).
+* **Affitto & Spese Dinamiche con Frequenze:**
+  * Gestione dell'affitto principale con scelta della frequenza di pagamento (Mensile, Bimestrale, Trimestrale, Quadrimestrale, Semestrale, Annuale).
+  * **Spese Comuni Aggiuntive:** Sezione dinamica in cui è possibile aggiungere o rimuovere infinite voci di spesa (es. utenze, bollette, abbonamenti), indicando per ognuna l'importo e la frequenza di incidenza reale sul mese.
+* **Arrotondamenti & Cuscinetto di Risparmio:** Calcolo automatico delle quote arrotondate a multipli di 5€ per garantire un piccolo avanzo (cuscinetto) sul conto cointestato a fine mese.
+* **Salvataggio Locale (localStorage):**
+  * **Default Personale:** Possibilità di memorizzare la configurazione corrente come predefinita per i prossimi accessi.
+  * **Storico Versioni:** Salvataggio delle configurazioni nel tempo con note descrittive ed esportazione/ripristino istantaneo di vecchi accordi.
+* **Ottimizzazione Mobile & Stampa PDF:** Design completamente *responsive* ottimizzato per smartphone e tablet, con layout a colonna singola e foglio di stile dedicato per stampare o salvare direttamente il report in PDF.
 
 ---
 
-## 📦 Struttura delProgetto
-Il progetto è diviso in tre file puliti all'interno della stessa cartella:
-1. `index.html` — Struttura della dashboard, form di configurazione e layout del report.
-2. `style.css` — Regole di stile, design responsive e regole di stampa (@media print).
-3. `app.js` — Motore di calcolo, gestione del `localStorage`, eventi live e ripristino storico.
+## 📂 Struttura del Progetto
+
+Il progetto è suddiviso in tre file puliti e separati:
+1. **`index.html`** — L'interfaccia utente (Dashboard, Sidebar di configurazione, Report, Storico).
+2. **`style.css`** — Il foglio di stile con supporto responsive per mobile e regole di stampa.
+3. **`app.js`** — La logica di calcolo in tempo reale, la gestione del DOM e la persistenza in `localStorage`.
 
 ---
 
-## 🚀 Installazione e Avvio Rapido
+## 🚀 Come Avviare l'App da Smartphone o PC
 
-Trattandosi di un'applicazione basata su file statici (`client-side`), non richiede container Docker, Lando o server PHP per l'esecuzione locale.
+### 1. In locale
+Basta scaricare i tre file (`index.html`, `style.css`, `app.js`) all'interno della stessa cartella e fare doppio click su `index.html` per aprirli con qualsiasi browser web (Chrome, Safari, Firefox).
 
-1. **Clona la repository privata:**
-   ```bash
-   git clone git@github.com:TuoUsername/budget-coppia-app.git
-   cd budget-coppia-app
-   ```
-2. **Avvio:**
-   * Apri semplicemente il file `index.html` con un doppio click nel tuo browser (Chrome, Firefox, Safari, Edge).
-   * Oppure avvialo tramite un server locale (es. estensione *Live Server* di VS Code o un comando rapido PHP in ambiente WSL: `php -S localhost:8000`).
-
----
-
-## 📖 Guida all'Uso
-
-1. **Configura i Dati:** Inserisci gli stipendi netti, l'affitto e gli importi delle singole utenze nella barra laterale sinistra.
-2. **Personalizza le Quote:** Usa i toggle per forzare una percentuale di affitto manuale, una quota fissa o applica un delta (+/-) nella sezione *Aggiustamenti Finali* per ottenere cifre tonde (es. 500€).
-3. **Consulta il Report:** La dashboard centrale calcolerà in tempo reale i totali, la scomposizione delle utenze e le istruzioni operative aggiornate.
-4. **Salva nello Storico:** Inserisci una nota descrittiva (es. "Configurazione con conguaglio gas") e clicca **Salva nello Storico**. Potrai richiamarla o cancellarla in qualsiasi momento.
-5. **Imposta Default:** Clicca su **Imposta come Default** per fare in modo che l'app si apra sempre con i tuoi parametri preferiti.
-6. **Esporta in PDF:** Clicca su **Scarica PDF / Stampa** per generare il documento pronto per l'archiviazione.
+### 2. Pubblicarla online gratis con GitHub Pages (Consigliato per Smartphone)
+Per avere l'app sempre a portata di mano sul cellulare tramite un link web:
+1. Crea una repository su **GitHub** e carica i tre file (`index.html`, `style.css`, `app.js`).
+2. Vai su **Settings > Pages** nella tua repository.
+3. Sotto *Build and deployment*, seleziona il ramo principale (es. `main` o `master`) e clicca su **Save**.
+4. Dopo circa un minuto, GitHub ti fornirà un URL pubblico (es. `https://tuonome.github.io/nome-repo/`).
+5. Apri quell'URL dal browser del tuo smartphone (Safari o Chrome) e salvalo tra i preferiti o aggiungilo alla schermata Home come un'app nativa!
