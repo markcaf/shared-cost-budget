@@ -35,5 +35,5 @@ Basta scaricare i tre file (`index.html`, `style.css`, `app.js`) all'interno del
 
 ### 2. Pubblicata online con GitHub Pages (Consigliato per Smartphone)
 Per avviare l'app a portata di mano sul cellulare seguire il seguente link web:
-1. **[GitHub](https://markcaf.github.io/shared-cost-budget/)**
+1. **[Markcaf - Shared Cost Budget](https://markcaf.github.io/shared-cost-budget/)**
 5. Apri quell'URL dal browser del tuo smartphone (Safari o Chrome o altro) e salvalo tra i preferiti o aggiungilo alla schermata Home come un'app nativa!
